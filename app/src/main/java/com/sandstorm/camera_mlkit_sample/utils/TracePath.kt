@@ -4,9 +4,8 @@ import android.graphics.Color
 import android.graphics.Path
 
 data class TracePath(
-    var color: Color,
-    var emboss: Boolean,
+    var color: Int,
     var blur: Boolean,
-    var strokeWidth: Int,
+    var strokeWidth: Float,
     var path: Path
 )
