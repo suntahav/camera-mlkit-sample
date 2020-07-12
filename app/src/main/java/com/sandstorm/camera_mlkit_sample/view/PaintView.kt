@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import com.sandstorm.camera_mlkit_sample.utils.TracePath
@@ -23,7 +22,7 @@ class PaintView @JvmOverloads constructor(
     private var mPaint: Paint
     private val path = arrayListOf<TracePath>()
     private var mBlur: MaskFilter
-     var mBitmap: Bitmap
+    var mBitmap: Bitmap
     private var mCanvas: Canvas
 
     private var currentColor: Int
@@ -79,25 +78,26 @@ class PaintView @JvmOverloads constructor(
         val tracePath = TracePath(DEFAULT_COLOR, true, 20F, mPath)
         path.add(tracePath)
         mPath.reset()
-        mPath.moveTo(x,y)
+        mPath.moveTo(x, y)
         mX = x
         mY = y
     }
 
-    private fun pathMove(x: Float, y: Float){
-        val dx = abs(x-mX)
-        val dy = abs(y-mY)
+    private fun pathMove(x: Float, y: Float) {
+        val dx = abs(x - mX)
+        val dy = abs(y - mY)
 
-        if(dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE){
-            mPath.quadTo(mX,mY,(mX+x)/2,(mY+y)/2)
+        if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
+            mPath.quadTo(mX, mY, (mX + x) / 2, (mY + y) / 2)
             mX = x
             mY = y
         }
     }
 
-    private fun pathStop(){
-        mPath.lineTo(mX,mY)
+    private fun pathStop() {
+        mPath.lineTo(mX, mY)
     }
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val x = event?.x
@@ -137,12 +137,12 @@ class PaintView @JvmOverloads constructor(
                 maskFilter = null
             }
 
-            if(p.blur) mPaint.maskFilter = mBlur
+            if (p.blur) mPaint.maskFilter = mBlur
 
-            mCanvas.drawPath(p.path,mPaint)
+            mCanvas.drawPath(p.path, mPaint)
 
         }
-        canvas?.drawBitmap(mBitmap, 0F, 0F, mBitmapPaint )
+        canvas?.drawBitmap(mBitmap, 0F, 0F, mBitmapPaint)
         canvas?.restore()
     }
 }

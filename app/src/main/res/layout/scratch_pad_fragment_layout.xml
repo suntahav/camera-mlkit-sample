@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/resultTv"
         android:layout_width="match_parent"
@@ -20,7 +21,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:textSize="20sp"
-        tools:text="Temp Text"/>
+        tools:text="Temp Text" />
+
     <Button
         android:id="@+id/classifyBtn"
         android:layout_width="wrap_content"
@@ -29,8 +31,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:text="@string/classify"
-        />
+        android:text="@string/classify" />
+
     <Button
         android:id="@+id/clearBtn"
         android:layout_width="wrap_content"
@@ -39,5 +41,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:text="@string/clear"/>
+        android:text="@string/clear" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,16 +12,15 @@ import kotlinx.android.synthetic.main.scratch_pad_fragment_layout.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.lang.Exception
 
-class ScratchPadFragment: Fragment() {
-    private lateinit var classifier : Classifier
+class ScratchPadFragment : Fragment() {
+    private lateinit var classifier: Classifier
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.scratch_pad_fragment_layout,container,false)
+        return inflater.inflate(R.layout.scratch_pad_fragment_layout, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,7 +29,7 @@ class ScratchPadFragment: Fragment() {
         setListeners()
     }
 
-    private fun initialize(){
+    private fun initialize() {
         classifier = Classifier(requireContext())
         clear()
         GlobalScope.launch {
@@ -38,12 +37,12 @@ class ScratchPadFragment: Fragment() {
         }
     }
 
-    private fun clear(){
+    private fun clear() {
         paintView.clear()
         resultTv.text = ""
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         classifyBtn.setOnClickListener {
             classifyImage()
         }
@@ -53,15 +52,15 @@ class ScratchPadFragment: Fragment() {
         }
     }
 
-    private fun classifyImage(){
+    private fun classifyImage() {
         val bitmap = paintView?.mBitmap
-        if(bitmap!=null && classifier.isInitialized){
+        if (bitmap != null && classifier.isInitialized) {
             GlobalScope.launch {
                 try {
                     val result = classifier.classifyAsync(bitmap)
                     resultTv.text = result
-                }catch (e : Exception){
-                    Log.d("Exception",e.toString())
+                } catch (e: Exception) {
+                    Log.d("Exception", e.toString())
                 }
 
             }

@@ -1,6 +1,5 @@
 package com.sandstorm.camera_mlkit_sample.utils
 
-import android.graphics.Color
 import android.graphics.Path
 
 data class TracePath(
