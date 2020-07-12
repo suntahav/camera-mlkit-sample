@@ -127,7 +127,7 @@ class Classifier(private val context: Context) {
         Log.d("Interpreter Log : ","Interpreter Closed")
     }
     companion object {
-        private val MODEL_FILE = "mnist_with_softmax.tflite"
+        private val MODEL_FILE = "mnist_with_softmax_2.tflite"
         private val FLOAT_TYPE_SIZE = 4
         private val PIXEL_SIZE = 1
         private val OUTPUT_CLASS_COUNT = 10
