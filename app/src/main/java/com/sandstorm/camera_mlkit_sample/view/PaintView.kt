@@ -1,5 +1,6 @@
 package com.sandstorm.camera_mlkit_sample.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
@@ -22,7 +23,7 @@ class PaintView @JvmOverloads constructor(
     private var mPaint: Paint
     private val path = arrayListOf<TracePath>()
     private var mBlur: MaskFilter
-    private var mBitmap: Bitmap
+     var mBitmap: Bitmap
     private var mCanvas: Canvas
 
     private var currentColor: Int
@@ -31,7 +32,7 @@ class PaintView @JvmOverloads constructor(
     private var bgColor = DEFAULT_BG_COLOR
     private val mBitmapPaint = Paint(Paint.DITHER_FLAG)
 
-    lateinit var metric: DisplayMetrics
+
     private var mX = 0f
     private var mY = 0f
 
@@ -48,8 +49,8 @@ class PaintView @JvmOverloads constructor(
             mBlur = BlurMaskFilter(5.0F, BlurMaskFilter.Blur.NORMAL)
         }
 
-        val height = metric.heightPixels
-        val width = metric.widthPixels
+        val height = context.resources.displayMetrics.widthPixels
+        val width = context.resources.displayMetrics.widthPixels
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         mCanvas = Canvas(mBitmap)
 
@@ -97,6 +98,7 @@ class PaintView @JvmOverloads constructor(
     private fun pathStop(){
         mPath.lineTo(mX,mY)
     }
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val x = event?.x
         val y = event?.y

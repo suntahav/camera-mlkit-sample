@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">camera-mlkit-sample</string>
+    <string name="classify">Classify</string>
+    <string name="clear">Clear</string>
 </resources>
